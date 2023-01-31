@@ -1,0 +1,25 @@
+
+
+
+.button {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  background-color: var(--blue-dark);
+  font-weight: 700;
+  color: var(--gray100);
+  outline: none;
+
+  border-radius: 0.5rem;
+  border: none;
+
+}
+
+
+.button:hover, .button:focus {
+  background-color: var(--blue);
+}

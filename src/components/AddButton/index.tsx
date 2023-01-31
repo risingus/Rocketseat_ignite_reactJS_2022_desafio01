@@ -1,6 +1,13 @@
-import { ButtonHTMLAttributes } from 'react'
+import plusIcon from '../../assets/plus.svg'
 import styles from './index.module.css'
 
 const AddButton = ({ ...rest }) => {
-	return <button {...rest}>Criar </button>
+	return (
+		<button {...rest} className={styles.button}>
+			Criar
+			<img src={plusIcon} alt='plus icon' />
+		</button>
+	)
 }
+
+export { AddButton }
