@@ -1,9 +1,11 @@
 import styles from './index.module.css'
+import clipBoardIcon from '../../assets/clipboard.svg'
+import { Task } from '../Task'
 
 interface Task {
-	id: string
-	text: string
-	completed: boolean
+	id?: string
+	text?: string
+	completed?: boolean
 }
 
 interface TaskContainerProps {
@@ -12,8 +14,8 @@ interface TaskContainerProps {
 
 const TaskContainer = ({ tasks }: TaskContainerProps) => {
 	return (
-		<div className={styles.taksContainer}>
-			<div>
+		<div className={styles.tasksContainer}>
+			<div className={styles.tasksContent}>
 				<header>
 					<div className={styles.createdTasksCounter}>
 						<span>Tarefas criadas</span>
@@ -28,10 +30,30 @@ const TaskContainer = ({ tasks }: TaskContainerProps) => {
 					</div>
 				</header>
 
-				<div>
-					<strong>Você ainda não tem tarefas cadastradas</strong>
-					<span>Crie tarefas e organize seus itens a fazer</span>
+				<div className={styles.taskListContainer}>
+					{Array.isArray(tasks) &&
+						tasks.length > 0 &&
+						tasks.map((task) => (
+							<Task
+								key={task?.id}
+								text={task?.text}
+								id={task?.id}
+								completed={task?.completed}
+							/>
+						))}
 				</div>
+
+				{!Array.isArray(tasks) ||
+					(tasks.length === 0 && (
+						<div className={styles.noTasksContainer}>
+							<img src={clipBoardIcon} alt='clipboard' />
+							<span>
+								<strong>Você ainda não tem tarefas cadastradas</strong>
+								<br />
+								Crie tarefas e organize seus itens a fazer
+							</span>
+						</div>
+					))}
 			</div>
 		</div>
 	)

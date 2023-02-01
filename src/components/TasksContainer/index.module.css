@@ -1,20 +1,20 @@
 
 
 
-.taksContainer {
+.tasksContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+  margin-top: 4rem;
 }
 
-.taksContent {
-  /* width: 46rem; */
-  flex-direction: column;
-  width: 100%;
-  
+.tasksContent {
+  width: 46rem;
 }
+
+
 
 header {
   width: 100%;
@@ -22,6 +22,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 1.5rem;
 }
 
 
@@ -36,6 +37,7 @@ header {
 .createdTasksCounter > span, .completedTasksCounter > span  {
   font-weight: 700;
   font-size: 0.875rem;
+ 
 }
 
 .createdTasksCounter > span {
@@ -48,6 +50,29 @@ header {
 
 
 .tasksCounter {
+  background-color: var(--gray400);
+  color: var(--gray200);
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
 
+.noTasksContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  line-height: 140%;
+
+  border-top: 1px solid var(--gray400);
+  border-radius: 0.5rem;
+  padding: 4rem 1.5rem;
+  
+}
+
+.taskListContainer {
+  display: flex;
+  flex-direction: column;
 }
 
