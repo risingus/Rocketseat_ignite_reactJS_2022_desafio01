@@ -1,21 +1,18 @@
 import { useMemo, useReducer } from 'react'
 
-interface Task {
+interface ReducerAction {
+	type: string
 	id?: string
 	text?: string
 	completed?: boolean
 }
 
-interface ReducerAction extends Task {
-	type: string
-}
 
-const initialState = [] as any
+const initialState = [] as Task[]
 
-function tasksReducer(state: any, action: ReducerAction) {
+function tasksReducer(state: Array<any>, action: ReducerAction) {
 	switch (action.type) {
 		case 'add': {
-			console.log(state, 'aqui o state')
 			return [
 				...state,
 				{
@@ -26,8 +23,6 @@ function tasksReducer(state: any, action: ReducerAction) {
 			]
 		}
 		case 'change': {
-			console.log(...state, 'state')
-			console.log(action, 'action')
 			return state.map((task: Task) => {
 				if (task.id !== action.id) return task
 				return {
@@ -48,7 +43,7 @@ function tasksReducer(state: any, action: ReducerAction) {
 const useTasks = () => {
 	const [tasks, dispatch] = useReducer(tasksReducer, initialState)
 
-	function createTask(newTask: any) {
+	function createTask(newTask: string) {
 		try {
 			if (!newTask) return
 			if (newTask.trim().length === 0) return
@@ -63,7 +58,7 @@ const useTasks = () => {
 		}
 	}
 
-	function changeTaks(id: string) {
+	function changeTasks(id: string) {
 		try {
 			if (!id) return
 
@@ -98,7 +93,7 @@ const useTasks = () => {
 	return {
 		taskState,
 		deleteTasks,
-		changeTaks,
+		changeTasks,
 		createTask,
 	}
 }

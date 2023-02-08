@@ -7,14 +7,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 4rem;
 }
-
-.tasksContent {
-  width: 46rem;
-}
-
-
 
 header {
   width: 100%;
@@ -74,5 +67,5 @@ header {
 .taskListContainer {
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
 }
-

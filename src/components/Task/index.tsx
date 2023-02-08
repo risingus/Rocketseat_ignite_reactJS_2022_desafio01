@@ -1,11 +1,19 @@
-import { useTasks } from '../../hooks/useTasks'
-import { ReactComponent as TrashSvg } from '../../assets/trash.svg'
-import { ReactComponent as CheckedIcon } from '../../assets/check.svg'
+import { ReactComponent as TrashSvg } from '../../assets/images/trash.svg'
+import { ReactComponent as CheckedIcon } from '../../assets/images/check.svg'
 import styles from './index.module.css'
 
-export const Task = ({ id = '', text = '', completed = false }) => {
-	const { changeTaks, deleteTasks } = useTasks()
+interface TaskProps extends Task {
+	changeTasks: (id: string) => void
+	deleteTasks: (id: string) => void
+}
 
+export const Task = ({
+	id = '',
+	text = '',
+	completed = false,
+	changeTasks,
+	deleteTasks,
+}: TaskProps) => {
 	return (
 		<div className={styles.task}>
 			<div>
@@ -13,13 +21,14 @@ export const Task = ({ id = '', text = '', completed = false }) => {
 					type='checkbox'
 					id='task'
 					name='task'
-					onChange={() => changeTaks(id)}
+					onChange={() => changeTasks(id)}
 					checked={completed}
 				/>
+				<CheckedIcon className={styles.checkboxIcon} />
 				<label htmlFor='task'>{text}</label>
 			</div>
 
-			<button className={styles.deleteButton} onClick={() => deleteTasks(id)}>
+			<button onClick={() => deleteTasks(id)}>
 				<TrashSvg />
 			</button>
 		</div>

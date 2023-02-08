@@ -1,4 +1,4 @@
-import plusIcon from '../../assets/plus.svg'
+import plusIcon from '../../assets/images/plus.svg'
 import styles from './index.module.css'
 
 const AddButton = ({ ...rest }) => {

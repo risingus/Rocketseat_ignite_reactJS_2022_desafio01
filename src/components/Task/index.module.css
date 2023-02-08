@@ -1,14 +1,11 @@
-
-
 .task {
+  width: 46rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1rem;
-  height: 4.5rem;
-
   background-color: var(--gray500);
   border: 1px solid var(--gray400);
   border-radius: 0.5rem;
@@ -21,13 +18,70 @@
 }
 
 .task > div {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  display: grid;
   gap: 0.75rem;
+  grid-template-columns: 1.5rem 1fr 1rem;
+  align-items: start;
+
+}
+
+.task > div > svg {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: 0.25rem;
+  pointer-events: none;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.task > div > label {
+ text-align: justify;
+}
+
+.task > div:has(input[type='checkbox']:not(:checked)) > svg {
+  opacity: 0;
+}
+
+.task > div > input[type='checkbox'] {
+  all: unset;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 1.09rem;
+  height: 1.09rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--blue);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task > div > input[type='checkbox']:hover {
+  border-color: var(--blue-dark);
+  opacity: 0.9;
 }
 
 
-.task > .deleteButton {
+.task > div > input[type='checkbox']:checked {
+  border-color: var(--purple-dark);
+  background-color: var(--purple-dark);
+}
+
+
+.task > div > input[type='checkbox']:checked:hover {
+  border-color: var(--purple);
+  background-color: var(--purple);
+}
+
+.task > div:has(input[type='checkbox']:checked) > label {
+  text-decoration: dashed;
+  text-decoration-line: line-through;
+  color: var(--gray300);
+}
+
+.task > button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -38,8 +92,20 @@
   height: 1.5rem;
 }
 
-.task > .deleteButton:hover {
+.task > button > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.task > button:hover {
   background-color: var(--gray400);
   color: var(--danger);
+}
+
+
+@media (width < 755px) {
+  .task {
+    width: 100%;
+  }
 }
 

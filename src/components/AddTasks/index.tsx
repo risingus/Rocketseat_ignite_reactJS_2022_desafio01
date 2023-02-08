@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, FormEvent, ChangeEvent } from 'react'
 import { AddButton } from '../AddButton'
 import { Input } from '../Input'
 import styles from './index.module.css'
 
 interface AddTasksProps {
-	createTask: (event: any) => void
+	createTask: (text: string) => void
 }
 
 const AddTasks = ({ createTask }: AddTasksProps) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 	const [newTask, setNewTask] = useState('' as string)
 
-	function createNewTaks(event: any) {
+	function createNewTaks(event: FormEvent<HTMLFormElement>) {
 		if (event) event.preventDefault()
 		if (!inputRef.current) return
 
@@ -33,8 +33,10 @@ const AddTasks = ({ createTask }: AddTasksProps) => {
 					name='newTask'
 					ref={inputRef}
 					value={newTask}
-					onChange={(event: any) => setNewTask(event?.target?.value)}
-					placeholder='Adicione uma nova Tarefa'
+					onChange={(event: ChangeEvent<HTMLInputElement>) =>
+						setNewTask(event?.target?.value)
+					}
+					placeholder='Adicione uma nova tarefa'
 					required
 				/>
 				<AddButton type='submit' />

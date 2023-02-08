@@ -1,11 +1,11 @@
-import { forwardRef } from 'react'
+import { forwardRef, ChangeEvent } from 'react'
 import styles from './index.module.css'
 
 interface InputProps {
 	placeholder: string
 	required?: boolean
 	name?: string
-	onChange: any
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void
 	value: string
 }
 
